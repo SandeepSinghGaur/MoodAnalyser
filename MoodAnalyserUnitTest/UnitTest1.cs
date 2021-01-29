@@ -1,5 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MoodAnalyser;
+using System;
+using System.Diagnostics;
 
 namespace MoodAnalyserUnitTest
 {
@@ -21,21 +23,35 @@ namespace MoodAnalyserUnitTest
             Assert.AreEqual("HAPPY", mood);
         }
 
-            [TestMethod]
-            public void WhenSadMoodReturnSadUsingConstructor()
+        [TestMethod]
+        public void WhenSadMoodReturnSadUsingConstructor()
+        {
+            CheckMood referenceMood = new CheckMood("I am in Sad Mood");
+            string mood = referenceMood.AnalyseMood();
+            Assert.AreEqual("SAD", mood);
+        }
+        [TestMethod]
+        public void WhenAnyMoodReturnHappyUsingConstructor()
+        {
+            CheckMood referenceMood = new CheckMood("I am in Any Mood");
+            string mood = referenceMood.AnalyseMood();
+            Assert.AreEqual("HAPPY", mood);
+        }
+        [TestMethod]
+        public void WhenNullCatchException()
+        {
+            try
             {
-                CheckMood referenceMood = new CheckMood("I am in Sad Mood");
-                string mood = referenceMood.AnalyseMood();
-                Assert.AreEqual("SAD", mood);
-            }
-            [TestMethod]
-            public void WhenAnyMoodReturnHappyUsingConstructor()
-            {
-                CheckMood referenceMood = new CheckMood("I am in Any Mood");
-                string mood = referenceMood.AnalyseMood();
+                CheckMood moodAnalyser = new CheckMood(null);
+                string mood = moodAnalyser.AnalyseMood();
                 Assert.AreEqual("HAPPY", mood);
+            }
+            catch (NullReferenceException e)
+            {
+                Debug.WriteLine(e.ToString());
             }
 
         }
     }
+}
 
