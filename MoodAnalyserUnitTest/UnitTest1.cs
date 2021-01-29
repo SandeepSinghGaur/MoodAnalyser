@@ -11,15 +11,15 @@ namespace MoodAnalyserUnitTest
         [TestMethod]
         public void WhenSadMoodReturnSad()
         {
-            CheckMood referenceMood = new CheckMood();
-            string mood = referenceMood.AnalyseMood("I am in Sad Mood");
+            CheckMood referenceMood = new CheckMood("I am in Sad Mood");
+            string mood = referenceMood.AnalyseMood();
             Assert.AreEqual("SAD", mood);
         }
         [TestMethod]
         public void WhenAnyMoodReturnHappy()
         {
-            CheckMood referenceMood = new CheckMood();
-            string mood = referenceMood.AnalyseMood("I am in Any Mood");
+            CheckMood referenceMood = new CheckMood("I am in Any Mood");
+            string mood = referenceMood.AnalyseMood();
             Assert.AreEqual("HAPPY", mood);
         }
 
@@ -50,8 +50,34 @@ namespace MoodAnalyserUnitTest
             {
                 Debug.WriteLine(e.ToString());
             }
-
+        }
+        [TestMethod]
+        public void GivenSadMessageNull_WhenAnalyse_ShouldThrowException()
+        {
+            try
+            {
+                CheckMood moodAnalysis = new CheckMood(null);
+                string mood = moodAnalysis.AnalyseMood();
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual(MoodAnalyserException.ExceptionType.EnterNull, e.Type);
+            }
+        }
+        [TestMethod]
+        public void GivenSadMessageEmpty_WhenAnalyse_ShouldThrowException()
+        {
+            try
+            {
+                CheckMood moodAnalysis = new CheckMood(" ");
+                string mood = moodAnalysis.AnalyseMood();
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual(MoodAnalyserException.ExceptionType.EnterEmpty, e.Type);
+            }
         }
     }
 }
 
+       

@@ -6,25 +6,19 @@ namespace MoodAnalyser
 {
    public class CheckMood
     {
-        private string message;
+        public string message;
         public CheckMood() { }
-        public CheckMood(string message)
+        public CheckMood(object message)
         {
-            this.message = message;
+            this.message = (string)message;
         }
         public string AnalyseMood()
         {
-            if (message.Contains("Sad"))
-                return "SAD";
-            else
-                return "HAPPY";
-        }
-        public string AnalyseMood(string message)
-        {
-            if (message.Contains("Sad"))
+            if (Equals("Sad", message))
                 return "SAD";
             else
                 return "HAPPY";
         }
     }
 }
+
