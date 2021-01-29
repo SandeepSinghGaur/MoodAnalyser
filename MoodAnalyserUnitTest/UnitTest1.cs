@@ -20,5 +20,22 @@ namespace MoodAnalyserUnitTest
             string mood = referenceMood.AnalyseMood("I am in Any Mood");
             Assert.AreEqual("HAPPY", mood);
         }
+
+            [TestMethod]
+            public void WhenSadMoodReturnSadUsingConstructor()
+            {
+                CheckMood referenceMood = new CheckMood("I am in Sad Mood");
+                string mood = referenceMood.AnalyseMood();
+                Assert.AreEqual("SAD", mood);
+            }
+            [TestMethod]
+            public void WhenAnyMoodReturnHappyUsingConstructor()
+            {
+                CheckMood referenceMood = new CheckMood("I am in Any Mood");
+                string mood = referenceMood.AnalyseMood();
+                Assert.AreEqual("HAPPY", mood);
+            }
+
+        }
     }
-}
+
