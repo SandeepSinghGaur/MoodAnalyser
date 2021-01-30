@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MoodAnalyser
+﻿namespace MoodAnalyser
 {
-   public class CheckMood
+    public class CheckMood
     {
         public string message;
         public CheckMood() { }
