@@ -130,6 +130,38 @@ namespace MoodAnalyserUnitTest
             object obj = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyserUnitTest.MoodAnalyser", "MoodAnalyser");
             expected.Equals(obj);
         }
+        //<Summary>
+        //Test Case 5.1 Given MoodAnalyse Class Name Should Return MoodAnalyser Object
+        //<summary>
+        [TestMethod]
+        public void GivenMoodAnalyserClassName_ShouldReturnMoodAnalyserObject_Using_Parameterized()
+        {
+            object expected = new MoodAnalyser("HAPPY");
+            object obj = MoodAnalyserFactory.CreateMoodAnalyseUsingParameterizedConstructor("MoodAnalyserUnitTest.MoodAnalyser","MoodAnalyser", "HAPPY");
+            expected.Equals(obj);
+        }
+
+        //<Summary>
+        //Test Case 5.2 Given MoodAnalyse Class Name Should Throw Class Not Found Exception
+        //<summary>
+        [TestMethod]
+        public void GivenMoodAnalyserClassName_ShouldThrowClassNotFound_Using_Parameterized()
+        {
+            object expected = new MoodAnalyser("Class Not Found");
+            object obj = MoodAnalyserFactory.CreateMoodAnalyseUsingParameterizedConstructor("MoodAnalyserUnitTest.MoodAnalyser", "MoodAnalyser", "HAPPY");
+            expected.Equals(obj);
+        }
+        //<Summary>
+        //Test Case 5.3 Given MoodAnalyse Class Name Should Throw Constructor Not Found Exception
+        //<summary>
+        [TestMethod]
+        public void GivenMoodAnalyserClassName_ShouldThrowConstructorNotFound_Using_Parameterized()
+        {
+            object expected = new MoodAnalyser("Constructor not found");
+            object obj = MoodAnalyserFactory.CreateMoodAnalyseUsingParameterizedConstructor("MoodAnalyserUnitTest.MoodAnalyser", "MoodAnalyser", "HAPPY");
+            expected.Equals(obj);
+        }
+
     }
 }
 
