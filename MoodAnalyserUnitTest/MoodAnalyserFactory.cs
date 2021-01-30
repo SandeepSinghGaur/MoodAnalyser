@@ -8,7 +8,7 @@ namespace MoodAnalyserUnitTest
 {
     class MoodAnalyserFactory
     {
-        public static object CreateMoodAnalyser(string className,string constructorName)
+        public static object CreateMoodAnalyser(string className, string constructorName)
         {
             string pattern = @"." + constructorName + "$";
             Match result = Regex.Match(className, pattern);
@@ -31,5 +31,8 @@ namespace MoodAnalyserUnitTest
 
             }
         }
+       
     }
 }
+    
+
